@@ -1,0 +1,9 @@
+.jumbotron {
+    background-image: url("/assets/images/pexels-photo-518543.jpeg");
+    height: 500px; 
+}
+
+h1 {
+    font-family: 'Song Myung', serif;
+    color: rgb( 226, 221, 221); 
+}
