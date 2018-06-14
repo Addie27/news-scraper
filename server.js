@@ -123,7 +123,7 @@ app.get("/saved", function (req, res) {
     .then(function (savedArticle) {
       // If all Notes are successfully found, send them back to the client
 
-      res.render("saved", savedArticle);
+      res.render("saved", { savedArticle });
     })
     .catch(function (err) {
       // If an error occurs, send the error back to the client
