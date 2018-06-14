@@ -11,3 +11,14 @@ h1 {
 .card-width {
     width: 100%; 
 }
+
+button {
+    color: white; 
+    border: 1px solid gray; 
+}
+
+.replace {
+    float: right;
+    color: gray;
+    border: 1 px solid gray; 
+}

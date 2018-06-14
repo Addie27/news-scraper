@@ -97,6 +97,22 @@ app.get("/articles", function (req, res) {
 
 });
 
+// Route for deleting saved article from main article db
+app.delete("/articles/updated", function (req, res) {
+
+  db.Article.delete(req.body)
+  console.log(req.body)
+    .then(function (newArticle) {
+      console.log(newArticle);
+      res.render("index", { newArticle });
+    })
+    .catch(function (err) {
+      // If an error occurs, send the error back to the client
+      res.json(err);
+    });
+
+});
+
 
 
 // Route for saving an article 
@@ -131,33 +147,33 @@ app.get("/saved", function (req, res) {
     });
 });
 
-// // Route for grabbing a specific Article by id, populate it with it's note
-// app.post("/articles/id", function (req, res) {
+// Route for grabbing a specific Article by id, populate it with it's note
+app.post("/articles/id", function (req, res) {
 
-//   db.Article.find({ _id: req.params.id })
-//     .populate("note")
-//     .then(function (dbArticle) {
-//       // If all Notes are successfully found, send them back to the client
-//       res.json(dbArticle);
-//     })
-//     .catch(function (err) {
-//       // If an error occurs, send the error back to the client
-//       res.json(err);
-//     });
-// });
+  db.Saved.find({ _id: req.params.id })
+    .populate("note")
+    .then(function (dbArticle) {
+      // If all Notes are successfully found, send them back to the client
+      res.json(dbArticle);
+    })
+    .catch(function (err) {
+      // If an error occurs, send the error back to the client
+      res.json(err);
+    });
+});
 
-// // Route for saving/updating an Article's associated Note
-// app.post("/articles/:id", function (req, res) {
+// Route for saving/updating an Article's associated Note
+app.post("/articles/id", function (req, res) {
 
-//   db.Note.create(req.body)
-//   .then(function(newNote) {
-//     return db.Article.findOneAndUpdate({_id: req.params.id}, {note: newNote._id}, {new : true})
-//   })
-//   .then(function (data) {
-//     res.json(data)
-//   })
+  db.Note.create(req.body)
+  .then(function(newNote) {
+    return db.Article.findOneAndUpdate({_id: req.params.id}, {note: newNote._id}, {new : true})
+  })
+  .then(function (data) {
+    res.json(data)
+  })
 
-// });
+});
 
 // Start the server
 app.listen(PORT, function () {

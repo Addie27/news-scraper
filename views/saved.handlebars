@@ -1,13 +1,15 @@
 <div class="container-fluid">  
     {{#each savedArticle}} 
     <div class="card card-width">
-        <div class="card-body"></div>
-            <a href="{{link}}" class="card-link" target="_blank">
-                <h3>{{title}}</h3>
+        <div class="card-body">
+            <h4>
+            <a href="{{link}}" class="card-link" target="_blank" data-id="{{_id}}">
+                {{title}}
             </a>
-            <a class="btn btn-success note float-right">Add Note</a>
-            <a class="btn btn-danger note float-right">Delete Article</a>
+            <button class="btn btn-success note float-right">Add Note</button>
+            <button class="btn btn-danger delete float-right">Delete Article</button>
+            </h4>
         </div>
-    </div>
+    </div> 
    {{/each}}
 </div>
