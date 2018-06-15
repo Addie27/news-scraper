@@ -98,19 +98,20 @@ app.get("/articles", function (req, res) {
 });
 
 // Route for deleting saved article from main article db
-app.delete("/articles/updated", function (req, res) {
+app.delete("/articles/delete", function (req, res) {
 
-  db.Article.delete(req.body)
-  console.log(req.body)
-    .then(function (newArticle) {
-      console.log(newArticle);
-      res.render("index", { newArticle });
+  db.Article.findByIdAndRemove(req.params.id)
+  
+    .then(function (dbArticle) {
+      res.render("index", {dbArticle}); 
+      
     })
     .catch(function (err) {
       // If an error occurs, send the error back to the client
       res.json(err);
     });
 
+    
 });
 
 
@@ -120,11 +121,11 @@ app.post("/saved", function (req, res) {
   db.Saved.create(req.body)
     .then(function (dbSaved) {
       // View the added result in the console
-      console.log(dbSaved);
+      // console.log(dbSaved);
 
     })
     .catch(function (err) {
-      console.log(err);
+      // console.log(err);
       // If an error occurred, send it to the client
       //return res.json(err);
     });
