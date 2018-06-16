@@ -16,6 +16,9 @@ var SavedSchema = new Schema({
     type: String,
     required: true
   },
+  summary: {
+    type: String,
+  },
   id : {
     type: String, 
   },

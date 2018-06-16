@@ -2,7 +2,7 @@ $(document).on("click", ".note", function() {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
-  var thisId = $(this).siblings().attr("data-id");
+  var thisId = $(this).siblings("h6").children("a").attr("data-id");
 
   // Now make an ajax call for the Article
   $.ajax({
@@ -58,8 +58,9 @@ $(document).on("click", ".save", function () {
   // Grab the id associated with the article from the submit button
 
   var thisId = $(this).siblings().attr("data-id");
-  var thisTitle = $(this).siblings().text().trim();
+  var thisTitle = $(this).siblings("#title").text().trim();
   var thisLink = $(this).siblings().attr("href");
+  var thisSummary = $(this).siblings("#summary").text().trim();
 
 
   $.ajax({
@@ -68,7 +69,8 @@ $(document).on("click", ".save", function () {
     data: {
       _id: thisId,
       title: thisTitle,
-      link: thisLink
+      link: thisLink,
+      summary: thisSummary
     }
   })
     // With that done
