@@ -101,12 +101,12 @@ app.get("/articles", function (req, res) {
 });
 
 // Route for deleting saved article from main article db
-app.delete("/articles/delete", function (req, res) {
+app.delete("/delete/:id", function (req, res) {
 
-  db.Article.findByIdAndRemove(req.params.id)
+  db.Saved.findByIdAndRemove({ _id: req.params.id })
   
     .then(function (dbArticle) {
-      res.render("index", {dbArticle}); 
+      
       
     })
     .catch(function (err) {
@@ -114,7 +114,7 @@ app.delete("/articles/delete", function (req, res) {
       res.json(err);
     });
 
-    
+       
 });
 
 

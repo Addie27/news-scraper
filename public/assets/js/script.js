@@ -79,3 +79,24 @@ $(document).on("click", ".save", function () {
     });
   $(this).parent().empty();
 });
+
+// When you click the save button
+$(document).on("click", ".delete", function () {
+  // Grab the id associated with the article from the submit button
+
+  var thisId = $(this).siblings("h6").children("a").attr("data-id");
+ 
+
+  $.ajax({
+    method: "DELETE",
+    url: "/delete/" + thisId,
+    data: {
+      _id: thisId,
+    }
+  })
+    // With that done
+    .then(function (data) {
+      
+    });
+  $(this).parent().empty();
+});
