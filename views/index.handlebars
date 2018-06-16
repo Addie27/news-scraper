@@ -2,10 +2,13 @@
     {{#each dbArticle}}
     <div class="card card-width">
         <div class="card-body">
-            <a href="{{link}}" class="card-link" target="_blank" data-id="{{_id}}">
+           <h6 class="card-title">
+               <a href="{{link}}" class="card-link" target="_blank" data-id="{{_id}}">
                 {{title}}               
             </a>
-            <button class="btn btn-success save float-right" >Save Article</button>          
+            <div class="card-text">{{summary}}</div>
+            <button class="btn btn-success save float-right" >Save Article</button> 
+            </h6>          
         </div>
     </div>
     {{/each}}

@@ -15,10 +15,19 @@ h1 {
 button {
     color: white; 
     border: 1px solid gray; 
+    float: right; 
 }
 
 .replace {
     float: right;
     color: gray;
     border: 1 px solid gray; 
+}
+
+.card-text {
+    color: gray;
+}
+
+#bodyinput {
+    color: gray;
 }

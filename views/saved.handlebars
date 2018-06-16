@@ -2,15 +2,19 @@
     {{#each savedArticle}}
     <div class="card card-width">
         <div class="card-body">
-            <h4>
+            <h6 class="card-title">
                 <a href="{{link}}" class="card-link" target="_blank" data-id="{{_id}}">
                     {{title}}
                 </a>
-                <button type="button" class="btn btn-primary note float-right" data-toggle="modal" data-target="#modal">
-                    Add Note
-                </button>
-                <button class="btn btn-danger delete float-right">Delete Article</button>
-            </h4>
+            </h6>
+            <div class="card-text">
+                {{summary}}
+            </div>
+            <button type="button" class="btn btn-primary note float-right" data-toggle="modal" data-target="#modal">
+                Notes
+            </button>
+            <button class="btn btn-danger delete float-right">Delete Article</button>
+
         </div>
     </div>
     {{/each}}
@@ -20,19 +24,7 @@
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            <div class="modal-body" id="notes"></div>
         </div>
     </div>
 </div>
