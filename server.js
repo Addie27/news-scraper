@@ -25,7 +25,7 @@ var MONGODB_URI = process.env.MONGOLAB_NAVY_URI|| "mongodb://localhost/mongoHead
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect(MONGOLAB_NAVY_URI);
+mongoose.connect(MONGODB_URI);
 
 var links = [];
 var titles = [];
